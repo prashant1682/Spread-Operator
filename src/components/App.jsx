@@ -10,26 +10,10 @@ function App() {
   function handleChange(event) {
     const { name, value } = event.target;
 
-    setContact(prevValue => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: prevValue.lName,
-          email: prevValue.email
-        };
-      } else if (name === "lName") {
-        return {
-          fName: prevValue.fName,
-          lName: value,
-          email: prevValue.email
-        };
-      } else if (name === "email") {
-        return {
-          fName: prevValue.fName,
-          lName: prevValue.lName,
-          email: value
-        };
-      }
+    setContact((prevValue) => {
+      // Below a spread operator is been used to create a new obejct ...prevValue and then name array is been addded
+      //[name] will add the  element key from above const to the object and return the value
+      return { ...prevValue, [name]: value };
     });
   }
 
